@@ -1,0 +1,50 @@
+/* components/w-goods-item/w-goods-item.wxss */
+.goods-item {
+  /* width: 200rpx; */
+  text-align: center;
+  color: #333;
+  padding-bottom: 85rpx;
+}
+
+.image {
+  width: 100%;
+  border-radius: 10rpx;
+}
+
+.desc-info {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 5rpx;
+   font-size: 26rpx;
+
+}
+/* .title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 30rpx;
+} */
+
+ .price {
+  color: #3399FF;
+  font-weight: bold;
+ white-space: nowrap
+}
+
+ .cfav {
+  position: relative;
+   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* .cfav::before {
+  content: '';
+  position: absolute;
+  left: -15px;
+  top: -1px;
+  width: 14px;
+  height: 14px;
+  background: url("/assets/images/common/favor.png") 0 0/14px 14px;
+} */

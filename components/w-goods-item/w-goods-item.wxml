@@ -1,0 +1,9 @@
+<!--components/w-goods-item/w-goods-item.wxml-->
+<view class='goods-item' bind:tap="navigationto">
+  <image class='image' src="{{goodsitem.pic}}"  mode='widthFix'/>
+  <view class='desc-info'>
+      <text class='price'>作者：{{goodsitem.author}}</text>
+      <!-- <image class='icon' src="/assets/images/common/favor.png"/> -->
+      <view><text class='cfav'>{{goodsitem.title}}</text></view>
+  </view>
+</view>

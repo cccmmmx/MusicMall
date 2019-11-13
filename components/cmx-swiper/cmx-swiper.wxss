@@ -1,0 +1,4 @@
+/* components/cmx-swiper/cmx-swiper.wxss */
+.swiper-item image{
+  width: 100%
+}

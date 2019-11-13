@@ -1,0 +1,11 @@
+<!--pages/home/home.wxml-->
+<!-- <text>首页</text> -->
+<view class="home">
+<c-swiper banner="{{banner}}" />
+<c-recomnend recommend="{{recommend}}" bind:imageload="handleImageLoad"/>
+<c-popular/>
+<c-tab-control id="tab-control" titles="{{titles}}" bind:tabclick="handleTabclick" class="{{isFixedTop?'fixed':''}}"/>
+<c-tab-control titles="{{titles}}" wx:if="{{isFixedTop}}"/>
+<w-goods goodslist="{{goods[currentType].list}}"/>
+<w-back-top wx:if="{{showBackTop}}"/>
+</view>

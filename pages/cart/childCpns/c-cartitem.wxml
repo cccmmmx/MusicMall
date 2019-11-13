@@ -1,0 +1,18 @@
+<!--pages/cart/childCpns/c-cartitem.wxml-->
+<view class="cart" bindtap="navigationto">
+<view class="cart-item" >
+<image class="image" src="{{musicList.audioPoster}}"/>
+<image class="img_love" src="../../../assets/images/music/love_active.png"/>
+<view class="cart-text">
+<view class="author">
+    <image src="../../../assets/images/cart/author.png"/>
+    <text>{{musicList.audioAuthor}}</text>
+ </view>
+<view class="name">
+    <image src="../../../assets/images/cart/music.png"/> 
+    <text>{{musicList.audioName}}</text>
+                      </view>
+              </view>
+      </view>
+</view>
+
