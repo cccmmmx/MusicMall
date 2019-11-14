@@ -1,0 +1,4 @@
+<!--components/c-playing/c-playing.wxml-->
+<view class="c-playing" bindtap="toPlaying" bind:traPing="traPing">
+<image src="{{isplaySong.audiolist.audioPoster}}" class="{{isplaySong.isplay?'transforms':''}}"/>
+</view>

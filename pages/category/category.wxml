@@ -15,6 +15,7 @@
             </view>
             <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
         </view>
+        <c-playing class="playing" isplaySong="{{isplaySong}}"/>
         <w-goods goodslist="{{list}}"/>
         <w-back-top wx:if="{{showBackTop}}"/>
   

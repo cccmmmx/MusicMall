@@ -1,9 +1,11 @@
 // pages/cart/cart.js
 Page({
   data: {
-    musicList:{}
+    musicList:{},
+    isplaySong:{}
   },
   onLoad: function (options) {
+    this.playing();
     this.setData({
       musicList: {}
     })
@@ -24,6 +26,13 @@ Page({
   },
   onShow: function () {
     this.onLoad();
+  },
+  playing() {
+    const isplaySong = wx.getStorageSync('isplaySong')
+    console.log(isplaySong)
+    this.setData({
+      isplaySong: isplaySong
+    })
   },
   onHide: function () {
 

@@ -1,0 +1,22 @@
+/* components/c-playing/c-playing.wxss */
+
+.c-playing image{
+    width: 140rpx;
+    height: 140rpx;
+   border-radius: 70rpx;
+   background: #f2f2f2;
+   vertical-align: middle;
+    box-shadow: 0 0 20px #000000
+}
+.transforms{
+  animation:run 10s linear 0.1s infinite;
+-webkit-animation:run 10s linear 0.1s infinite;
+}
+@keyframes run{     
+            from{     
+                -webkit-transform:rotate(0deg);     
+            }     
+            to{     
+                -webkit-transform:rotate(360deg);     
+            }     
+        }

@@ -6,29 +6,40 @@ Page({
    * 页面的初始数据
    */
   data: {
-        audioPoster: '',//音乐图片
-        audioName: '',//音乐名称
-        audioAuthor: '',//作者
-        audioSrc: '',//音频
-        songid:'',
+        // audioPoster: '',//音乐图片
+        // audioName: '',//音乐名称
+        // audioAuthor: '',//作者
+        // audioSrc: '',//音频
+        // songid:'',
+        audiolist:{},
         isLove:false,
         isplay: false,//是否播放
         haslength: false,//当前是否有音乐的长度
         maxlength: 0,
         musiclist:[],
-        value: 0//当前播放到了哪儿
+        value: app.globalData.value//当前播放到了哪儿
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-     this.setData({
-       audioSrc: decodeURIComponent(options.musicUrl),
-       audioAuthor: options.author,
-       audioPoster: decodeURIComponent(options.image),
-       audioName: options.title,
-       songid: options.songid
-     })
+    //  this.setData({
+    //    audioSrc: decodeURIComponent(options.musicUrl),
+    //    audioAuthor: options.author,
+    //    audioPoster: decodeURIComponent(options.image),
+    //    audioName: options.title,
+    //    songid: options.songid
+    //  })
+    const audiolist={}
+    audiolist['songid'] = options.songid
+    audiolist['audioSrc'] = decodeURIComponent(options.musicUrl)
+    audiolist['audioAuthor'] = options.author
+    audiolist['audioPoster'] = decodeURIComponent(options.image)
+    audiolist['audioName'] = options.title
+    this.setData({
+      audiolist: audiolist
+    })
+   console.log(this.data.audiolist.audioAuthor)
      //页面加载时先将缓存中的数据加入到musiclist并判断是否已经时选择收藏
     const music = wx.getStorageSync('music')
     if (music){
@@ -58,14 +69,14 @@ Page({
       })
     }
   if (this.data.isLove) {
-      const author = this.data.audioAuthor
-      const audioPoster = this.data.audioPoster
-      const audioName = this.data.audioName
-      const audioSrc = this.data.audioSrc
-      const songid = this.data.songid
-      const musiclist = this.data.musiclist
+    const author = this.data.audiolist.audioAuthor
+    const audioPoster = this.data.audiolist.audioPoster
+    const audioName = this.data.audiolist.audioName
+    const audioSrc = this.data.audiolist.audioSrc
+    const songid = this.data.audiolist.songid
+    const musiclist = this.data.musiclist
         musiclist.push({
-      'songid': this.data.songid,
+          'songid': songid,
       'audioAuthor': author,
       'audioPoster': audioPoster,
       'audioName': audioName,
@@ -83,7 +94,7 @@ Page({
     }else{
       //从缓存中删除用户点击不收藏的音乐并加到缓存中
     const storage=wx.getStorageSync('music')
-    const isId=this.data.songid;
+    const isId = this.data.audiolist.songid;
      for(let i=0;i<=storage.length-1;i++){
        if (isId==storage[i].songid){
          storage.splice(i,1);
@@ -98,9 +109,40 @@ Page({
     })
     }
   },
+
   onShow: function () {
-    myaudio.src = this.data.audioSrc
-    this.getmusiclength();
+    //进入音乐播放界面时判断音乐是否播放，如果是就继续播放，否则获取播放其他音乐
+    const that=this
+    clearInterval(myintervi1);
+    const isplaySong= wx.getStorageSync('isplaySong')
+    if (isplaySong && isplaySong.audiolist.songid == that.data.audiolist.songid){
+      myaudio.src=isplaySong.audiolist.audioSrc
+      that.setData({
+        isplay: isplaySong.audiolist.isplay,
+        value: app.globalData.value
+      })
+      if (isplaySong.isplay){
+        this.play()
+      }
+    }else{
+      myaudio.src = that.data.audiolist.audioSrc
+    }
+    that.getmusiclength();
+  },
+  onUnload(){
+    // const that=this
+    this.triggerEvent("traPing", true)
+    if(this.data.isplay){
+      wx.setStorageSync('isplaySong', {
+        'audiolist': this.data.audiolist,
+        'isplay': true
+      })
+    }else{
+      wx.setStorageSync('isplaySong', {
+        'audiolist': this.data.audiolist,
+        'isplay': false
+      })
+    }
   },
   play: function () {
     const that = this;
@@ -110,6 +152,8 @@ Page({
     myintervi1 = setInterval(function () {
       var a = that.data.value;
       a++;
+      //将播放时间保持到全局变量中，以便保存音乐的播放状态
+      app.globalData.value=a
       that.setData({ value: a })
     }, 1000);
   },
@@ -133,7 +177,7 @@ Page({
       that.setData({
         haslength: true,
         maxlength: a,
-        value: 0
+        value: this.data.value
       });
     }
   },
@@ -143,18 +187,18 @@ Page({
     // 清除定时器
     clearInterval(myintervi1);
     this.setData({ value: e.detail.value });
+    app.globalData.value = e.detail.value
     myaudio.seek(e.detail.value);
     myaudio.play();
     //累加刷新页面
     myintervi1 = setInterval(function () {
       var a = that.data.value;
-      // console.log(a);
       a++;
       that.setData({ value: a })
     }, 1000);
   },
   changing: function (e) {
-    myaudio.stop();
+    // myaudio.stop();
     clearInterval(myintervi1);
     this.setData({ isplay: true });
     // myaudio.pause();

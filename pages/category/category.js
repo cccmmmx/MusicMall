@@ -8,6 +8,7 @@ Page({
     inputVal: "",
     list:[],
     showBackTop: false,
+    isplaySong:{}
   },
   showInput: function () {
     this.setData({
@@ -55,9 +56,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    
   },
-
+  
+  playing() {
+    const isplaySong = wx.getStorageSync('isplaySong')
+    console.log(isplaySong)
+    this.setData({
+      isplaySong: isplaySong
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -69,7 +77,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.playing()
   },
   //下拉加载更多
   onReachBottom() {

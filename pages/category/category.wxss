@@ -13,3 +13,9 @@
 .weui-search-bar{
   background: #3399FF
 }
+.playing{
+  z-index: 10;
+  position: fixed;
+  bottom: 60rpx;
+  left: 10rpx;
+}

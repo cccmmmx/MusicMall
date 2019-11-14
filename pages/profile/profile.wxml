@@ -1,6 +1,6 @@
 <!--pages/profile/profile.wxml-->
 <view class='profile'>
-  <w-header/>
+  <w-header tempFilePaths="{{tempFilePaths}}" bind:traCheckedNum="traChecked"/>
   <w-info/>
   <w-list-view infos="{{orderList}}"/>
   <w-list-view infos="{{serviceList}}"/>

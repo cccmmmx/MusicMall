@@ -5,7 +5,8 @@
     "c-popular":"./childCpns/c-popular/c-popular",
     "c-tab-control":"/components/c-tab-control/w-tab-control",
     "w-goods": "/components/w-goods/w-goods",
-    "w-back-top":"/components/w-back-top/w-back-top"
+    "w-back-top":"/components/w-back-top/w-back-top",
+    "c-playing": "/components/c-playing/c-playing"
   },
   "navigationBarTitleText": "音乐商城"
 }

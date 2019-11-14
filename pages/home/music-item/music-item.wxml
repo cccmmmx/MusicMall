@@ -2,16 +2,16 @@
 <view class="page">
 <view class="music">
 <view class="imgview" bindtap="islove">
-<image class="imageLove" src="{{isLove?'../../../assets/images/music/love_active.png':'../../../assets/images/music/love.png'}}" />
-</view>
-<image class="img" src="{{audioPoster}}"></image>
+  <image class="imageLove" src="{{isLove?'../../../assets/images/music/love_active.png':'../../../assets/images/music/love.png'}}" />
+  </view>
+<image class="img" src="{{audiolist.audioPoster}}"></image>
 <view class="music-item {{isplay? 'transform' : 'transformpause'}}" bindtap="{{isplay ? 'stop' : 'play'}}">
-  <image class="item-ing-one" src='{{audioPoster}}' />
+  <image class="item-ing-one" src='{{audiolist.audioPoster}}' />
   <image class="music-img-two" src="{{ isplay? '../../../assets/images/music/pause.png' : '../../../assets/images/music/play.png'}}"></image>
 </view>
   <view class="text">
-    <view>{{audioAuthor}}</view>
-    <view>{{audioName}}</view>
+    <view>{{audiolist.audioAuthor}}</view>
+    <view>{{audiolist.audioName}}</view>
 </view>
 <slider class="slider" max='{{maxlength}}' min="0" step="1" value="{{value}}" bindchanging="changing" bindchange="change" show-value></slider>
 </view>

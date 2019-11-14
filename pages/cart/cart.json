@@ -1,6 +1,8 @@
 {
   "usingComponents": {
-   "c-music-item":"./childCpns/c-cartitem"
+   "c-music-item":"./childCpns/c-cartitem",
+   "c-playing": "/components/c-playing/c-playing"
   },
-  "navigationBarTitleText": "收藏"
+  "navigationBarTitleText": "收藏",
+  "backgroundColor": "#eee"
 }

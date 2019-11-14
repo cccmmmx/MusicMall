@@ -1,4 +1,5 @@
 import { getMutiData, getMusicList} from '../../service/home.js'
+var app = getApp()  
 const titles=['pop','new','sell']
 const musicpage=['爱你','一直很安静','安静','他不懂','去年夏天','遇见','喜欢你','我知道','需要人陪','我很快乐']
 const TOP_DISTANCE=1000
@@ -18,7 +19,8 @@ Page({
     currentType:'pop',
     showBackTop:false,
     isFixedTop:false,
-    tabScrollTop:0
+    tabScrollTop:0,
+    isplaySong:{}
   },
   /**
    * 生命周期函数--监听页面加载
@@ -48,8 +50,17 @@ Page({
       this._getMusicList('说谎', 'new');
       this._getMusicList('晴天', 'sell');
     }
- 
   },
+  
+  onShow(){
+    this.playing();
+  },
+playing(){
+  const isplaySong = wx.getStorageSync('isplaySong')
+  this.setData({
+    isplaySong: isplaySong
+  })
+},
   handleImageLoad(){
     wx.createSelectorQuery().select('#tab-control').boundingClientRect(rect => {
         // console.log(rect)

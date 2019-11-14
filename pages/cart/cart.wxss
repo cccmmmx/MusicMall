@@ -1,69 +1,7 @@
 /* pages/cart/cart.wxss */
-.cart{
-  width: 100%;
-  background: #eee;
-  border-bottom: 2px solid #fff;
-  /* position: relative */
-}
-.img_love{
-    position: absolute;
-    width: 80rpx;
-    height: 80rpx;
-    top: 80rpx;
-    right: 60rpx;
-    z-index: 2
-}
-.cart-item{
-position: relative;
-width: 100%;
-height: 240rpx;
-}
-.image{
-  width: 200rpx;
-  height: 200rpx;
-  position: absolute;
-  top: 20rpx;
-  left: 20rpx;
-  border-radius: 50%;
-}
-.cart-text{
-  position: absolute;
-  top: 60rpx;
-  left: 260rpx;
-}
-.cart-text view{
-margin-top: 10rpx;
-}
-.author{
-  color: #808080;
-  font-size: 12px;
-  font-weight: bold;
-margin-left: 10rpx;
-text-overflow: ellipsis;
-  white-space: normal;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-}
-.author image{
-  width: 50rpx;
-  height: 50rpx;
-  margin-right: 10rpx;
-}
-.name{
-  color: #808080;
-  font-size: 12px;
-  text-overflow: ellipsis;
-  white-space: normal;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-}
-.name image{
-    width: 50rpx;
-  height: 50rpx;
-  margin-right: 10rpx;
-  overflow: hidden;
+.playing{
+  z-index: 10;
+  position: fixed;
+  bottom: 60rpx;
+  left: 10rpx;
 }

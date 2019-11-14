@@ -37,8 +37,7 @@
   },
   "window": {
     "backgroundTextStyle": "dark",
-    "navigationBarBackgroundColor": "#3399FF",
-    "enablePullDownRefresh": true
+    "navigationBarBackgroundColor": "#3399FF"
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"

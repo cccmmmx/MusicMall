@@ -1,7 +1,8 @@
 {
   "usingComponents": {
     "w-goods": "/components/w-goods/w-goods",
-    "w-back-top": "/components/w-back-top/w-back-top"
+    "w-back-top": "/components/w-back-top/w-back-top",
+    "c-playing": "/components/c-playing/c-playing"
   },
 "navigationBarTitleText": "搜索音乐"
 }

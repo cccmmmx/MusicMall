@@ -2,6 +2,12 @@
 .home{
   
 }
+.playing{
+  z-index: 10;
+  position: fixed;
+  bottom: 60rpx;
+  left: 10rpx;
+}
 .fixed{
   position: fixed;
   top: 0;

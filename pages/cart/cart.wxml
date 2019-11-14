@@ -2,3 +2,5 @@
 <view wx:for="{{musicList}}" wx:key="{{index}}">
 <c-music-item musicList="{{item}}"/>
 </view>
+
+<c-playing class="playing" isplaySong="{{isplaySong}}"/>

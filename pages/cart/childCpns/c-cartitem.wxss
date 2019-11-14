@@ -1,9 +1,7 @@
 /* pages/cart/childCpns/c-cartitem.wxss */
 .cart{
   width: 100%;
-  background: #eee;
-  border-bottom: 2px solid #fff;
-  /* position: relative */
+  border-bottom: 2px solid #eee;
 }
 .img_love{
     position: absolute;
@@ -25,6 +23,7 @@ height: 240rpx;
   top: 20rpx;
   left: 20rpx;
   border-radius: 50%;
+  box-shadow: 0 0 16px #2b2727;
 }
 .cart-text{
   position: absolute;

@@ -1,6 +1,7 @@
 <!--pages/home/home.wxml-->
 <!-- <text>首页</text> -->
 <view class="home">
+<c-playing class="playing" isplaySong="{{isplaySong}}"/>
 <c-swiper banner="{{banner}}" />
 <c-recomnend recommend="{{recommend}}" bind:imageload="handleImageLoad"/>
 <c-popular/>
