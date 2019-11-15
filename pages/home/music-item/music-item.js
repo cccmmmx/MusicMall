@@ -23,13 +23,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //  this.setData({
-    //    audioSrc: decodeURIComponent(options.musicUrl),
-    //    audioAuthor: options.author,
-    //    audioPoster: decodeURIComponent(options.image),
-    //    audioName: options.title,
-    //    songid: options.songid
-    //  })
     const audiolist={}
     audiolist['songid'] = options.songid
     audiolist['audioSrc'] = decodeURIComponent(options.musicUrl)
@@ -111,7 +104,7 @@ Page({
   },
 
   onShow: function () {
-    //进入音乐播放界面时判断音乐是否播放，如果是就继续播放，否则获取播放其他音乐
+    //进入音乐播放界面时判断音乐是否播放，如果是就继续播放，否则获取播放继续音乐
     const that=this
     clearInterval(myintervi1);
     const isplaySong= wx.getStorageSync('isplaySong')
@@ -129,9 +122,23 @@ Page({
     }
     that.getmusiclength();
   },
+
+getNewlist(value){
+if(value>=this.data.maxlength){
+  this.setData({
+    value:0
+  })
+  clearInterval(myintervi1);
+  app.globalData.value=0
+  myaudio.src = this.data.audiolist.audioSrc
+  this.getmusiclength();
+  this.play();
+}
+},
+
   onUnload(){
     // const that=this
-    this.triggerEvent("traPing", true)
+    // this.triggerEvent("traPing", true)
     if(this.data.isplay){
       wx.setStorageSync('isplaySong', {
         'audiolist': this.data.audiolist,
@@ -155,6 +162,7 @@ Page({
       //将播放时间保持到全局变量中，以便保存音乐的播放状态
       app.globalData.value=a
       that.setData({ value: a })
+      that.getNewlist(a)
     }, 1000);
   },
   // 停止
@@ -163,6 +171,8 @@ Page({
     clearInterval(myintervi1);
     this.setData({ isplay: false });
   },
+
+
   //获取音乐的长度
   getmusiclength: function () {
     const that = this;
@@ -195,6 +205,7 @@ Page({
       var a = that.data.value;
       a++;
       that.setData({ value: a })
+      that.getNewlist(a)
     }, 1000);
   },
   changing: function (e) {
